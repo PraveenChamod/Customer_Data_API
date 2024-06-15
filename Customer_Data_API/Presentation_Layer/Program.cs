@@ -5,8 +5,8 @@ using Data_Access_Layer.Models;
 using Data_Access_Layer.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Presentation_Layer.Extensions;
 using System.Text;
 using System.Text.Json.Serialization;
 
@@ -14,8 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<ApplicationDbContext>(option =>
-option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddApplicationDbContext(builder.Configuration);
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
@@ -48,7 +47,7 @@ builder.Services.AddScoped<AdminServices>();
 
 builder.Services.AddScoped<UserServices>();
 
-builder.Services.AddAutoMapper(typeof(Program).Assembly);
+builder.Services.AddAutoMapperSetup();
 
 builder.Services.AddApiVersioning(setup =>
 {

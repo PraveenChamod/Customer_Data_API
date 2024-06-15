@@ -29,11 +29,11 @@ namespace Presentation_Layer.Controllers
             _signInManager = signInManager;
             _config = config;
         }
- 
+
         public IActionResult Register(string returnUrl = null)
         {
             returnUrl ??= Url.Content("~/");
-            if(!_roleManager.RoleExistsAsync(StaticDetails.Role_Admin).GetAwaiter().GetResult())
+            if (!_roleManager.RoleExistsAsync(StaticDetails.Role_Admin).GetAwaiter().GetResult())
             {
                 _roleManager.CreateAsync(new IdentityRole(StaticDetails.Role_Admin)).Wait();
                 _roleManager.CreateAsync(new IdentityRole(StaticDetails.Role_Customer)).Wait();
@@ -41,8 +41,9 @@ namespace Presentation_Layer.Controllers
 
             RegisterVM registerVM = new()
             {
-                RoleList = _roleManager.Roles.Select(x => new SelectListItem { 
-                    Text = x.Name, 
+                RoleList = _roleManager.Roles.Select(x => new SelectListItem
+                {
+                    Text = x.Name,
                     Value = x.Name
                 }),
                 RedirectUrl = returnUrl

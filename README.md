@@ -11,6 +11,9 @@
 #### Customer Role - Email: customer1234@gmail.com | Password: Customer@1234
 ## Customer Data Frontend:
 ### Used Technologies: React Js, Boostrap, CSS, HTML5
+
+![Untitled-1](https://github.com/PraveenChamod/Customer_Data_API/blob/main/Customer_Data_Frontend/language_project/src/assets/Customer_List.png)
+
 ## Instructions:
 * Once you log into the system you can see the Login Page.
 * If you are not registered, you can register to the system by using the register page.
